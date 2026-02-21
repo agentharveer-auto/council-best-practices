@@ -1,59 +1,40 @@
-```python
 ## Code Writer Best Practices
 
 ## Requirements Gathering
-- Define a clear, testable contract and acceptance criteria before coding to prevent scope creep.
-- Prioritize input validation requirements upfront to avoid downstream errors and security vulnerabilities.
+- Document forward-compatible constraints to guide safe future expansions.
 
 ## API Design
-- Design stable, well-documented interfaces that decouple frontend and backend concerns and enable independent testing.
-- Simulate API interactions early in development to identify integration issues and refine contracts.
+- Version APIs early and communicate deprecations to prevent breaking clients.
 
 ## Architecture & Modularity
-- Isolate core logic into pure, side-effect-free units that are easy to unit test and reuse.
-- Favor functional programming principles to enhance testability and reduce side effects.
+- Prefer evolvable data representations (e.g., JSON-based state) to minimize schema migrations when rules evolve.
 
 ## Performance & Optimization
-- Apply memoization, caching, or algorithmic improvements only after measuring impact to avoid premature optimization.
-- Choose data structures and algorithms based on expected input size and performance characteristics.
+- Measure impact before optimizing; avoid premature optimization.
 
 ## Testing Strategy
-- Build a balanced test pyramid emphasizing unit tests for logic, integration tests for interfaces, and end-to-end tests for user flows.
-- Design test cases to cover both nominal and edge-case scenarios, including invalid inputs.
-
-## Quality & Reliability
-- Validate inputs at every boundary and provide actionable error messages to aid users and developers.
-- Implement robust error handling to prevent crashes and provide graceful degradation.
-
-## Documentation & Knowledge Transfer
-- Document interfaces, usage patterns, and decisions in concise, version-controlled docs rather than task-specific details.
-- Include clear examples and usage instructions in documentation to facilitate adoption.
-
-## Versioning & Deployability
-- Keep modules loosely coupled to support independent deployment and backward-compatible APIs.
-- Use version control to track changes and enable rollback to previous states.
+- Adopt a test pyramid and ensure coverage across unit, integration, and end-to-end tests; include property-based tests.
 
 ## Security
-- Treat all external input as untrusted and validate thoroughly at network and API boundaries.
-- Be mindful of potential security vulnerabilities, such as injection attacks and cross-site scripting.
+- Implement defense-in-depth with least privilege across services.
+
+## Documentation & Knowledge Transfer
+- Document interfaces and decisions in version-controlled docs; avoid task-specific details.
+
+## Versioning & Deployability
+- Aim for independent deployability and clear versioning of modules to ease rollback.
 
 ## Collaboration & Process
-- Establish clear ownership, code reviews, and a single source of truth for the core algorithm to reduce drift.
-- Use a consistent coding style and linting rules to improve readability and maintainability.
+- Establish clear ownership and code reviews to reduce drift.
 
 ## Reuse & Consistency
-- Favor reusable utilities and patterns across projects to reduce cognitive load and duplication.
-- Create a library of common functions and data structures to promote code reuse.
+- Maintain consistent naming conventions to facilitate code reuse and readability.
 
 ## Observability & Debugging
-- Instrument critical functions with lightweight logging or tracing to expedite debugging in production.
-- Use a structured logging format to facilitate analysis and correlation of events.
+- Standardize cross-service logging formats and use correlation IDs to enable end-to-end tracing.
 
 ## Edge Cases & Correctness
-- Prioritize correctness with coverage of edge cases and invariants before chasing performance gains.
-- Use property-based testing to automatically generate test cases and verify invariants.
+- Use invariants and property-based testing to surface edge cases and ensure correctness.
 
 ## Refactoring & Maintenance
-- Make small, well-tested refactors with incremental commits to minimize risk and maintainability.
-- Regularly review and update code to address technical debt and improve quality.
-```
+- Prioritize small, well-tested refactors with incremental commits to minimize risk.
