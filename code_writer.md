@@ -1,90 +1,10 @@
-## Real-Time Chat Application - MVP: Integrated Action Plan
-
-**Overall Goal:** Deliver a secure, functional, and usable Real-Time Chat Application MVP, addressing critical bugs and prioritizing key usability improvements.
-
-**Phase 1: Critical Bug Fixes (2 Weeks)**
-
-* **Priority:** MUST HAVE
-* **Deliverables:**
-    * **Security Fix (QA-001):** Resolve the login vulnerability. (Backend Developer, QA Engineer) - *Timeline: 3 days*
-    * **Message Reliability (QA-002):** Implement robust message delivery mechanisms. (Backend Developer, Frontend Developer, QA Engineer) - *Timeline: 5 days*
-* **Tasks:**
-    * Backend Developer: Implement secure authentication and authorization. Review and harden input validation.
-    * Frontend Developer: Integrate with backend authentication. Implement error handling for login failures.
-    * QA Engineer: Conduct thorough security testing and regression testing.
-
-**Phase 2: High Priority Improvements (2 Weeks)**
-
-* **Priority:** SHOULD HAVE
-* **Deliverables:**
-    * **Online User List Accuracy (QA-003):** Fix the online user list update issue. (Backend Developer, Frontend Developer, QA Engineer) - *Timeline: 2 days*
-    * **Performance Optimization (QA-006):** Reduce CPU usage. (Backend Developer, QA Engineer) - *Timeline: 3 days*
-    * **Clearer Error Messages (QA-004):** Improve password error message clarity. (Frontend Developer, PM) - *Timeline: 1 day*
-* **Tasks:**
-    * Backend Developer: Optimize WebSocket connection management. Implement caching mechanisms.
-    * Frontend Developer: Update UI to display clearer error messages.
-    * QA Engineer: Conduct performance testing and regression testing.
-
-**Phase 3: Usability & Design Refinement (1 Week - Concurrent with Phase 2)**
-
-* **Priority:** COULD HAVE (with potential for extension)
-* **Deliverables:**
-    * **UI/UX Implementation:** Implement the Designer's refined wireframes and mockups, focusing on:
-        * Chat Window Layout (Designer, Frontend Developer)
-        * Message Bubble Styling (Designer, Frontend Developer)
-        * Status Indicators (Designer, Frontend Developer)
-    * **Mobile Responsiveness Assessment:** Evaluate the effort required to implement mobile responsiveness (QA-005). (Frontend Developer, PM) - *Timeline: 2 days*
-* **Tasks:**
-    * Frontend Developer: Implement UI/UX designs.
-    * Designer: Provide ongoing design support and guidance.
-    * PM: Assess the feasibility of including mobile responsiveness in the current iteration.
-
-**Phase 4: Testing & Release (1 Week)**
-
-* **Priority:** MUST HAVE
-* **Deliverables:**
-    * **Comprehensive Testing:** Execute the QA Engineer's test plan, including unit, integration, system, and regression tests. (QA Engineer)
-    * **Security Review:** Conduct a final security review. (Backend Developer, Security Team)
-    * **Release Notes:** Prepare release notes documenting bug fixes and improvements. (PM)
-* **Tasks:**
-    * QA Engineer: Execute test plan, report bugs, and verify fixes.
-    * Backend Developer: Address any remaining security vulnerabilities.
-    * PM: Coordinate release activities and communicate with stakeholders.
-
-**Technology Stack:**
-
-*   **Frontend:** React, JavaScript, HTML, CSS
-*   **Backend:** Python, FastAPI, PostgreSQL, SQLAlchemy, JWT
-* **Testing:** Unity Test Framework (if applicable), NUnit/xUnit, Jenkins (CI/CD)
-
-**Communication Plan:**
-
-*   Daily stand-up meetings to track progress and identify roadblocks.
-*   Weekly status reports to stakeholders.
-*   Regular communication between developers, designers, and QA engineers.
-
-**Risk Management:**
-
-*   **WebSocket Connection Issues:** Implement robust error handling and reconnection logic.
-*   **Scalability Challenges:** Monitor performance closely and optimize code as needed.
-*   **Security Vulnerabilities:** Conduct thorough security testing and code reviews.
-*   **Scope Creep:** Strictly adhere to the MVP scope and prioritize bug fixes and essential usability improvements.
-
-**Success Metrics:**
-
-*   All critical bugs resolved.
-*   Positive user feedback on usability improvements.
-*   Acceptable performance under load.
-*   Successful completion of all test cases.
-*   On-time delivery of the MVP.
-
-Existing best practices:
 ## Code Writer Best Practices
 
 ## Requirements Gathering
 - Document forward-compatible constraints to guide safe future expansions.
 - Align on measurable success criteria and exit conditions to prevent scope creep.
 - Capture non-functional requirements (security, accessibility, performance) early to guide design.
+- Ensure traceability from requirements to tests and implementation.
 
 ## API Design
 - Version APIs early and communicate deprecations to prevent breaking clients.
@@ -95,15 +15,20 @@ Existing best practices:
 - Prefer evolvable data representations (e.g., JSON-based state) to minimize schema migrations when rules evolve.
 - Adopt clean architectural boundaries with explicit interfaces to enable safe component substitution.
 - Decouple persistence from domain logic via repository or gateway patterns to ease testing and evolution.
+- Prefer small, pure functions with explicit interfaces to ease testing, substitution, and reuse.
+- Favor immutable data and referential transparency to simplify reasoning and enable safer parallelism.
 
 ## Performance & Optimization
 - Measure impact before optimizing; avoid premature optimization.
 - Establish per-feature performance budgets and verify them during development.
+- Benchmark before and after changes and record results for future reference.
 
 ## Testing Strategy
 - Adopt a test pyramid and ensure coverage across unit, integration, and end-to-end tests; include property-based tests.
 - Include contract tests and consumer-driven tests to catch integration issues early.
 - Prioritize end-to-end tests for critical user journeys and ensure test data realism.
+- Design deterministic, data-driven tests to reduce brittleness and improve maintainability.
+- Use property-based testing where practical to surface hidden edge cases.
 
 ## Security
 - Implement defense-in-depth with least privilege across services.
@@ -114,6 +39,7 @@ Existing best practices:
 - Document interfaces and decisions in version-controlled docs; avoid task-specific details.
 - Record decisions with rationale and alternatives to preserve context for future teams.
 - Maintain lightweight ADRs and decision logs to capture why and when changes were made.
+- Where possible, auto-generate documentation from code to reduce drift.
 
 ## Versioning & Deployability
 - Aim for independent deployability and clear versioning of modules to ease rollback.
@@ -134,9 +60,10 @@ Existing best practices:
 - Standardize cross-service logging formats and use correlation IDs to enable end-to-end tracing.
 - Adopt distributed tracing with context propagation across services.
 - Standardize metrics and dashboards for end-to-end health, latency, and error rates.
+- Define a small, stable set of metrics for each feature and ship dashboards early.
 
 ## Edge Cases & Correctness
-- Use invariants and property-based testing to surface edge cases and ensure correctness.
+- Use invariants and pre/post-conditions for critical domains; automate checks in CI; apply fuzz testing where feasible.
 - Formalize invariants and pre/post-conditions for critical domains; automate checks in CI.
 - Use property-based testing where practical to surface hidden edge cases.
 
