@@ -10,6 +10,8 @@
 - Document backward-compatibility constraints and deprecation timelines upfront.
 - Privacy-by-design should be a founding constraint in planning; specify what data is logged, hashed, and retained.
 - Define acceptance criteria per requirement to enable early testability.
+- Identify regulatory, privacy, and accessibility constraints early to steer design decisions.
+- Capture explicit risk assumptions and trade-offs early to surface potential impacts.
 
 ## API Design
 - Version APIs early and communicate deprecations to prevent breaking clients.
@@ -18,6 +20,10 @@
 - Define migration paths and equivalence classes for inputs to minimize breaking changes across versions.
 - Maintain a single source of truth for API contracts and migration artifacts to avoid drift.
 - Promote contract testing as a core, ongoing practice to catch integration issues early.
+- Establish an API-change governance checkpoint to guard breaking changes and maintain backward compatibility.
+- Promote semantic versioning and deprecation paths for APIs to support graceful client upgrades.
+- Encourage stable, explicit contracts with clear deprecation paths for consumers.
+- Promote forward-compatible interface design to minimize cross-project drift over time.
 
 ## Architecture & Modularity
 - Prefer evolvable data representations (e.g., JSON-based state) to minimize schema migrations when rules evolve.
@@ -28,6 +34,8 @@
 - Plan for parallel data representations with a clear, versioned migration path and rollback plan.
 - Adopt dependency injection and explicit interfaces to decouple components and ease testing.
 - Promote small, testable units; design for composability and clear data flow.
+- Design with explicit interfaces and dependency injection to ease testing, substitution, and parallel development.
+- Decouple persistence from domain logic using repository-like boundaries to reduce coupling and improve testability.
 
 ## Performance & Optimization
 - Measure impact before optimizing; avoid premature optimization.
@@ -36,6 +44,7 @@
 - Define per-feature latency budgets early and aim for constant-time behavior where possible.
 - Measure, compare, and document performance impact before and after migration changes.
 - Set explicit performance gates tied to acceptance criteria to prevent regressions.
+- Define per-feature performance budgets and verify them during development to prevent regressions.
 
 ## Testing Strategy
 - Adopt a test pyramid and ensure coverage across unit, integration, and end-to-end tests; include property-based tests.
@@ -46,6 +55,8 @@
 - Extend the test plan with migration-focused tests: coexistence tests and deprecation-path validations.
 - Use deterministic test data and environments to reduce CI flakiness.
 - Align test plans with requirements and ensure traceability from tests back to acceptance criteria.
+- Aim for determinism in tests by controlling environment and data to reduce flakiness.
+- Link tests back to requirements and acceptance criteria to ensure coverage aligns with risk.
 
 ## Security
 - Implement defense-in-depth with least privilege across services.
@@ -54,6 +65,8 @@
 - Model backward-compatibility failure scenarios and secure error messaging during migrations.
 - Perform threat modeling early to identify high-risk paths and mitigations.
 - Log and monitor security-relevant events with privacy-conscious handling.
+- Apply defense-in-depth with least privilege and avoid logging sensitive credentials.
+- Incorporate security testing into CI/CD with automated checks and regular threat modeling.
 
 ## Documentation & Knowledge Transfer
 - Document interfaces and decisions in version-controlled docs; avoid task-specific details.
@@ -62,6 +75,8 @@
 - Where possible, auto-generate documentation from code to reduce drift.
 - Maintain centralized migration guides and API contract explanations accessible to all teams.
 - Align ADRs with architectural decisions and capture alternatives and rationales.
+- Maintain lightweight ADRs and decision logs to preserve rationale for future teams.
+- Automate documentation generation from code where feasible to minimize drift.
 
 ## Versioning & Deployability
 - Aim for independent deployability and clear versioning of modules to ease rollback.
@@ -69,6 +84,8 @@
 - Maintain backward-compatible changes with clear migration steps and deprecation plans.
 - Plan for canary or phased rollouts during migrations with clear sunset timelines.
 - Document rollback criteria and sunset timelines for deprecations.
+- Use feature flags and canary deployments to decouple rollout from code release and enable safe rollbacks.
+- Document rollback criteria and sunset timelines for all deprecated features.
 
 ## Collaboration & Process
 - Establish clear ownership and code reviews to reduce drift.
@@ -77,6 +94,8 @@
 - Establish a single source of truth for API contracts and migration artifacts to avoid drift.
 - Use migration-readiness checklists during planning and reviews.
 - Centralize decision logs to improve cross-team alignment and reduce rework.
+- Maintain an auditable trail of design decisions and trade-offs to aid future cross-team work.
+- Keep an auditable trail of design decisions and trade-offs to inform future cross-team work.
 
 ## Reuse & Consistency
 - Maintain consistent naming conventions to facilitate code reuse and readability.
@@ -84,6 +103,8 @@
 - Document and enforce coding standards and library usage to reduce duplication.
 - Promote canonical interfaces and versioned APIs to support cross-project consistency.
 - Publish and enforce design-system artifacts and token definitions across teams.
+- Publish versioned components and contract tests to encourage reuse across projects and reduce duplication.
+- Publish versioned components and contract tests to encourage reuse across projects and reduce duplication.
 
 ## Observability & Debugging
 - Standardize cross-service logging formats and use correlation IDs to enable end-to-end tracing.
@@ -92,6 +113,7 @@
 - Define a small, stable set of metrics for each feature and ship dashboards early.
 - Instrument migration-phase metrics (endpoint availability, latency, error rates) and propagate correlation IDs for end-to-end tracing.
 - Ensure trace contexts propagate automatically across service boundaries for end-to-end debugging.
+- Define a minimal, stable set of telemetry points per feature and align dashboards with acceptance criteria to simplify debugging.
 
 ## Edge Cases & Correctness
 - Use invariants and pre/post-conditions for critical domains; automate checks in CI; apply fuzz testing where feasible.
@@ -99,9 +121,11 @@
 - Use property-based testing where practical to surface hidden edge cases.
 - Document invariants for critical domains and enforce them during migrations.
 - Incorporate fuzz testing for critical parsing/validation paths to surface unexpected inputs.
+- Define invariants for critical domains and enforce them via CI checks and tests.
 
 ## Refactoring & Maintenance
 - Prioritize small, well-tested refactors with incremental commits to minimize risk.
-- Schedule small, safe refactors with regression tests and a rollback plan.
+- Schedule small safe refactors with regression tests and a rollback plan.
 - Maintain a changelog and rationale for refactors to aid future maintenance.
 - Plan migration-oriented refactors in small steps with rollback plans and traceable migration artifacts.
+- Prioritize small, well-tested refactors with regression tests to minimize risk.
