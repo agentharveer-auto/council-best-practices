@@ -78,7 +78,7 @@
 - Encourage small, frequent commits with meaningful messages to aid traceability.
 - Maintain a single source of truth for API contracts and migration artifacts.
 - Use decision logs and planning checklists to improve cross-team alignment.
-- Align on a sharedDefinition of Done to reduce ambiguity across teams.
+- Align on a shared definition of Done to reduce ambiguity across teams.
 - Foster inclusive, constructive feedback in code reviews to improve quality.
 
 ## Reuse & Consistency
