@@ -1,4 +1,3 @@
-Existing best practices:
 ## Product Management
 - Always clarify acceptance criteria and edge cases before design to avoid scope creep.
 - Define measurable success criteria and ensure testability aligns with QA coverage and performance expectations.
@@ -53,3 +52,9 @@ Existing best practices:
 - Adopt a unified error model with codes and user-facing messages that map to UX.
 - Differentiate user-facing errors from internal errors and ensure graceful degradation.
 - Provide actionable, clear error messages that guide remediation steps.
+
+## Frontend Development
+- Input sanitization is crucial to prevent XSS vulnerabilities.
+- Use component composition and state management tools (e.g., React Context) to manage complexity.
+- Prioritize clear error messaging to guide users and aid debugging.
+- Consider accessibility requirements during UI design and implementation.
