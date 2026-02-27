@@ -1,5 +1,4 @@
-```markdown
-# Number of Steps to Reduce a Number in Binary Representation to One
+## Number of Steps to Reduce a Number in Binary Representation to One
 
 ## Problem Description
 
@@ -129,4 +128,3 @@ The tests cover:
 - Adopt a unified error model with codes and user-facing messages that map to UX.
 - Differentiate user-facing errors from internal errors and ensure graceful degradation.
 - Provide actionable, clear error messages that guide remediation steps.
-```
