@@ -1,3 +1,4 @@
+Existing best practices:
 ## Requirements Gathering
 - Define measurable success criteria and acceptance criteria early to anchor validation and avoid scope creep.
 - Capture explicit non-functional requirements (security, performance, accessibility, maintainability) from the outset.
@@ -16,6 +17,7 @@
 - Define clear input/output contracts with explicit error semantics and examples.
 - Promote minimal, stable interfaces and provide migration paths for changes.
 - Treat API contracts as first-class artifacts and ensure they are versioned and tested.
+- Prefer idempotent API and operation design to simplify retries and error handling.
 
 ## Performance & Optimization
 - Measure performance before optimizing; establish per-feature budgets and profile to locate real bottlenecks.
@@ -29,6 +31,7 @@
 - Use property-based or boundary testing to surface edge cases beyond hand-crafted cases.
 - Keep tests fast, independent, and maintain traceability to acceptance criteria.
 - Include reproducer scenarios for flaky or hard-to-debug failures and document them.
+- Use deterministic seeds for fuzz and property-based tests to ensure reproducible failures and debugging.
 
 ## Security
 - Implement defense-in-depth and validate inputs thoroughly to prevent common vulnerabilities.
@@ -41,6 +44,8 @@
 - Centralize contracts and migration guides to reduce drift and onboarding effort.
 - Auto-generate or maintain concise, cookbook-style examples to accelerate adoption.
 - Strive for self-describing code and clear rationale to ease future maintenance.
+- Write self-describing code with clear names and concise rationale comments to reduce reliance on external documentation.
+- Provide a minimal, ready-to-run local development setup guide to lower onboarding friction and align environments.
 
 ## Versioning & Deployability
 - Strive for independent deployability with clear, semantically versioned modules.
@@ -53,6 +58,8 @@
 - Keep commits small and meaningful to improve traceability and review efficiency.
 - Maintain a single source of truth for contracts, schemas, and migrations.
 - Align on a shared Definition of Done and maintain lightweight decision logs for accountability.
+- Favor trunk-based development or minimal branching to reduce integration risk and keep CI fast.
+- Encourage rapid feedback loops between teams to catch integration issues early.
 
 ## Reuse & Consistency
 - Promote versioned components and canonical interfaces to support long-term reuse.
@@ -83,3 +90,5 @@
 - Integrate static analysis, type checks, and linters into the development workflow.
 - Gate changes with fast-running tests and clear CI feedback to maintain quality.
 - Use pre-commit hooks and consistent configuration to reduce drift across environments.
+- Automate dependency management with lockfiles and regular upgrade cadences to minimize risk and drift.
+- Provide a one-command developer setup script to bootstrap local environments consistently.
