@@ -1,4 +1,5 @@
 Existing best practices:
+Existing best practices:
 ## Requirements Gathering
 - Define measurable success criteria and acceptance criteria early to anchor validation and avoid scope creep.
 - Capture explicit non-functional requirements (security, performance, accessibility, maintainability) from the outset.
